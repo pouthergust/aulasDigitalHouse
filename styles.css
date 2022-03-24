@@ -167,6 +167,16 @@ svg:hover {
 }
 
 
+@media (max-width: 660px) {
+    
+    :root { --container: 600px; }
 
+    .header__nav { 
+        justify-content: center;
+        height: 150px; 
+    }
+
+    .header__nav .buttons__wrapper { justify-content: center; }
+}
 
 
