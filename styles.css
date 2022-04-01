@@ -19,6 +19,13 @@
     padding: 0;
 }
 
+html {
+    -webkit-scroll-behavior: smooth;
+    -moz-scroll-behavior: smooth;
+    -o-scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
+
 .container {
     max-width: var(--container);
     margin: 0 auto;
@@ -68,6 +75,7 @@
     color: var(--color-lighter);
     cursor: pointer;
     padding: 10px 20px;
+    text-decoration: none;
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) .3s;
 }
 
@@ -103,6 +111,13 @@
     border-radius: 5px;
     height: 400px;
     width: 100%;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) .3s;
+}
+
+.card:hover {
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+    transform: translate(-3px, -3px);
+    cursor: pointer;
 }
 
 .--1 { background:center / cover url('https://source.unsplash.com/1600x900/?beach'); }
@@ -132,8 +147,10 @@ svg:hover {
 
 .footer {
     background: var(--color-secundary);
+    border-radius: 15px 15px 0 0;
     padding: 15px 20px;
     margin-top: 30px;
+    text-align: center;
     width: 100%;
 }
 
@@ -143,14 +160,8 @@ svg:hover {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-evenly;
-}
-
-.brand {
-    background: var(--color-terceary);
-    border-radius: 50%;
-    height: 80px;  
-    text-align: center;
-    width: 80px;
+    max-width: 300px;
+    margin: 20px auto;
 }
 
 .brand__label {
@@ -158,12 +169,35 @@ svg:hover {
     margin-top: 10px;
 }
 
+.brand {
+    background: var(--color-terceary);
+    /* border-radius: 50%; */
+    height: 80px;  
+    text-align: center;
+    width: 80px;
+    display: block;
+    transition: all .3s ease-in;
+}
+
+.brand:hover {
+    filter: brightness(10) contrast(1);
+}
+
 .linkedin {
-    background: center / 110% url('https://cdn.freebiesupply.com/logos/large/2x/linkedin-icon-logo-png-transparent.png') #fff no-repeat;
+    /* background: center / 110% url('https://cdn.freebiesupply.com/logos/large/2x/linkedin-icon-logo-png-transparent.png') #fff no-repeat; */
+    background: center / contain url('https://www.pngarts.com/files/7/Linkedin-Logo-PNG-Free-Download.png') no-repeat;
 }
 
 .github {
-    background: center / 110% url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FGitHub_logo.png&f=1&nofb=1') #fff no-repeat;
+    /* background: center / 110% url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FGitHub_logo.png&f=1&nofb=1') #fff no-repeat; */
+    background: center / contain url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FGitHub_logo.png&f=1&nofb=1') no-repeat;
+}
+
+.bottom {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-block: 10px;
 }
 
 
