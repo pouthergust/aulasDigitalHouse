@@ -16,14 +16,15 @@ function Aluno(nome, qtdFaltas, notas) {
     
     // passo 2
     this.calculaMedia = function() {
+        let aluno = {}
         let notasTotal = this.notas.reduce((prev, curr) => prev + curr )
 
-        console.log(
-            'Nome: '+ this.nome +
-            '\nqtd de Faltas: ' + this.qtdFaltas +
-            '\nnotas: ' + this.notas +
-            '\nmedia: ' + parseInt(notasTotal / this.notas.length)  + '\n'
-        )
+        aluno.nome = this.nome
+        aluno.media = (notasTotal / this.notas.length) | 0
+        aluno.faltas = this.qtdFaltas
+        aluno.notas = this.notas
+
+        return aluno
     }
 
     this.faltas = function() {
@@ -41,26 +42,49 @@ const Wagner  =  new Aluno('Wagner',  (Math.random() * 10) | 0, [(Math.random() 
 // passo 3
 let curso = {
     nome: 'JavaScript',
-    faltasMax: 5,
+    faltasMax: 3,
     notaAprovacao: 4,
     listaEstudantes: [
         David, Erik, Gabriel,
         Luis, Mahiny, Wagner
     ],
+    // Passo 4
     novoAluno: function() {
         this.listaEstudantes.push(new Aluno('João', 7, [7,5,3]))
     },
+    // Passo 5
     aprovado: function(aluno) {
         let faltas = aluno.qtdFaltas
         let notas = aluno.notas
-        let media = parseInt(notas.reduce((prev, curr) => prev + curr ) / notas.length)
+        let media = parseInt(notas.reduce((prev, curr) => prev + curr) / notas.length)
+
+        if (
+            faltas <= this.faltasMax &&
+            media  >= this.notaAprovacao
+        ) {
+            return true
+        }
+        return false
+    },
+    verificaAprovacao: function() {
+        this.listaEstudantes.forEach(aluno => {
+            if (this.aprovado(aluno)) {
+                aluno.aprovado = true
+            } else {
+                aluno.aprovado = false
+            }
+        })
+        console.table(this.listaEstudantes, ['nome', 'aprovado'])
     }
 }
 
-David.calculaMedia()
-Erik.calculaMedia()
-Gabriel.calculaMedia()
-Luis.calculaMedia()
-Mahiny.calculaMedia()
-Wagner.calculaMedia()
+console.table([
+    David.calculaMedia(),
+    Erik.calculaMedia(),
+    Gabriel.calculaMedia(),
+    Luis.calculaMedia(),
+    Mahiny.calculaMedia(),
+    Wagner.calculaMedia()
+], ['nome', 'notas', 'media', 'faltas'])
 
+curso.verificaAprovacao()
