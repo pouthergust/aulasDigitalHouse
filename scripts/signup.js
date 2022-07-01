@@ -1,25 +1,27 @@
+import {
+    checkFields
+} from "./utils.js"
+
+let userInfo = {}
+
 const form = document.querySelector("[data-form-signup]")
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
-    const data = Object.fromEntries(new FormData(form).entries())
-    if (passwordConfirmValidation(data.password, data.passwordConfirm)) {
+    const data = userInfo
+    if (data) {
         delete data.passwordConfirm
         await registerUser(data)
     }
 })
 
-function passwordConfirmValidation(password, passwordConfirm) {
-    if (password !== passwordConfirm) {
-        const passwords = document.querySelectorAll("[data-password]")
-        passwords.forEach((input) => {
-            input.classList.add("invalidInput")
-        })
-        alert('As senhas devem ser iguais')
-        return false
-    }
-
-    return true
-}
+const inputs = document.querySelectorAll('input')
+inputs.forEach(input => {
+    input.addEventListener('keyup', ({target}) => {
+        const {value, name} = target
+        userInfo[name] = value
+        checkFields(userInfo, 'signup')
+    })
+})
 
 async function registerUser(user) {
     const options = {
@@ -32,8 +34,8 @@ async function registerUser(user) {
         .then((res) => res.json())
         .then(({ jwt }) => {
             if (!jwt) {
-                alert("Usuario já cadastrado!")
-                throw new Error("Usuario já cadastrado")
+                alert("Usuario já cadastrado! Sou um alerta")
+                throw new Error("Usuario já cadastrado! Sou um print no console")
             }
 
             alert("Usuario cadastrado com sucesso!")

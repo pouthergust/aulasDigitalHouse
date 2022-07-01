@@ -21,6 +21,7 @@ form {
   box-shadow: 0 5px 5px lightgrey;
   padding: 1em 2.5em;
   box-sizing: border-box;
+  width: 350px; 
 }
 
 form:after {
@@ -35,7 +36,6 @@ form:after {
 
 
 input {
-  width: 100%;
   padding: .4em .5em;
   background-color: var(--app-grey);
   border: 1px solid var(--app-grey);
@@ -53,6 +53,8 @@ label {
   margin-bottom: -.1em;
   margin-top: 1em;
   font-size: .8em;
+  display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -62,6 +64,10 @@ button {
   margin-top: 2em;
   font-weight: 400;
   font-size: 1em;
+}
+
+button:disabled {
+  background-color: grey;
 }
 
 .form-header {
@@ -92,5 +98,9 @@ button {
 
 .invalidInput {
   border: 1px solid #f00
+}
+
+.message {
+  color: red;
 }
 

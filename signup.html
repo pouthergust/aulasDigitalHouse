@@ -9,11 +9,6 @@
 
   <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
   <link rel="stylesheet" href="styles/acesso.css">
-
-  <!-- ---------------------- lógica aplicada no registro -------------------- -->
-  <script src="/scripts/utils.js" defer></script>
-  <script src="/scripts/signup.js" defer></script>
-
 </head>
 
 <body>
@@ -30,32 +25,40 @@
       <label>
         Nome:
         <input id="firstName" type="text" name="firstName" required>
+        <span class="message"></span>
       </label>
       <label>
         Sobrenome:
         <input id="lastName" type="text" name="lastName" required>
+        <span class="message"></span>
       </label>
       <label>
         Email:
-        <input id="email" type="email" name="email" pattern="^[a-z0-9.]+@[a-z0-9]+.[a-z]+(.[a-z]+)?$" required>
+        <input id="email" type="email" name="email" required>
+        <span class="message"></span>
       </label>
       <label>
         Senha:
         <input data-password type="password" name="password" required>
+        <span class="message"></span>
       </label>
       <label>
         Repetir senha:
         <input data-password type="password" name="passwordConfirm" required>
+        <span class="message"></span>
       </label>
 
-      <button>Criar conta</button>
+      <button type="submit" disabled >Criar conta</button>
 
     </form>
     <div class="ingressar">
       <a href="index.html">Já possui conta? Acesse aqui</a>
     </div>
   </div>
-
+  
+  <!-- ---------------------- lógica aplicada no registro -------------------- -->
+  <script type="module" src="/scripts/utils.js"></script>
+  <script type="module" src="/scripts/signup.js"></script>
 </body>
 
 </html>
