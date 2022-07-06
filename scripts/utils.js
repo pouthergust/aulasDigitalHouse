@@ -46,7 +46,7 @@ function lastNameValidation(lastName) {
 
 function emailValidation(email) {
     const pattern = /^[a-z0-9\.]+@[a-z0-9]+.[a-z]+(.[a-z]+)?$/
-    if (!pattern.test(email)) {
+    if (pattern.test(email)) {
         clearAlert(3)
         return true     
     }

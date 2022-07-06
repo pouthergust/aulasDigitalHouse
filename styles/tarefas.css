@@ -140,6 +140,9 @@ a {
 .tarefa .not-done:hover {
   background-color: var(--secondary);
 }
+.tarefa .not-done.completed {
+  background-color: var(--secondary);
+}
 
 .tarefa:first-child .not-done::before {
   content: '';
