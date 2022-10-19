@@ -1,8 +1,17 @@
 
 public class CheckQuality {
 
-	private Artigo inicial;
+	private Controle inicial;
 	
-	public CheckQuality() {}
-	public void verificar(Artigo artigo) {}
+	public CheckQuality() {
+		this.inicial = new ControleLote();
+		Controle peso = new ControlePeso();
+		Controle embalagem = new ControleEmbalagem();
+		
+		inicial.setControleSeguinte(peso);
+		peso.setControleSeguinte(embalagem);
+	}
+	public void verificar(Artigo artigo) {
+		this.inicial.verificar(artigo);
+	}
 }
